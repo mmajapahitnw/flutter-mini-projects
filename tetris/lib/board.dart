@@ -16,17 +16,17 @@ class _GameBoardState extends State<GameBoard> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: rowLength),
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Container(
-                child: Center(
-                    child: Text(index.toString(), style: TextStyle(color: Colors.white),)),
-              ),
-            );
-          }),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: rowLength),
+        itemBuilder: (context, index) {
+          return Center(
+            child: Text(
+              index.toString(),
+              style: TextStyle(color: Colors.white),
+            )
+          );
+        }
+      ),
     );
   }
 }
