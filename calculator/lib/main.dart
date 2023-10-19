@@ -23,7 +23,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var userQuestion = 'question';
+  var userQuestion = '';
   var userAnswer = 'answer';
 
   List<String> buttons = [
@@ -74,6 +74,33 @@ class _HomePageState extends State<HomePage> {
     } else {
       return Colors.white;
     }
+  }
+
+  // button action chooser
+  Function buttonAction(int index) {
+    if (index == 0) {
+      return () {
+        setState(() {
+          userQuestion = '';
+        });
+      };
+    } else if (index == 1) {
+      return () {
+        setState(() {
+          userQuestion = userQuestion.substring(0, userQuestion.length-1);
+        });
+      };
+    }
+
+    else {
+      return () {
+        setState(() {
+          userQuestion += buttons[index];
+        });
+      };
+    }
+
+
   }
 
   @override
@@ -130,6 +157,7 @@ class _HomePageState extends State<HomePage> {
                         color: buttonColor(buttons[index]),
                         textColor: textColor(index),
                         buttonText: buttons[index],
+                        buttonTapped: buttonAction(index),
                       );
                     }),
               ))
