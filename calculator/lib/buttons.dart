@@ -20,7 +20,9 @@ class MyButton extends StatelessWidget {
             child: Text(
               buttonText,
               style: TextStyle(
-                color: textColor
+                color: textColor,
+                fontSize: 18,
+                fontWeight: FontWeight.bold
               ),
             ),
           ),
