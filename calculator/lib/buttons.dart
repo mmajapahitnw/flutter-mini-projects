@@ -13,6 +13,7 @@ class MyButton extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: Container(
+        color: color,
         child: Text(
           buttonText,
           style: TextStyle(
