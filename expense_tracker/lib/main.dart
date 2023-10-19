@@ -1,14 +1,10 @@
+import 'package:expense_tracker/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:gsheets/gsheets.dart';
 
 
 
-void main() async{
-
-
-  // updating a cell
-  await sheet!.values.insertValue('MAJA', column: 1, row: 1);
-
+void main() {
   runApp(const MyApp());
 }
 
@@ -17,6 +13,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
+    );
   }
 }
