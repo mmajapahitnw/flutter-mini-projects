@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tetris/board.dart';
 
 void main() => runApp(const MyApp());
 
@@ -8,22 +9,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: GameBoard(),
+      home: GameBoard,
     );
   }
 }
 
-class GameBoard extends StatefulWidget {
-  const GameBoard({super.key});
 
-  @override
-  State<GameBoard> createState() => _GameBoardState();
-}
-
-class _GameBoardState extends State<GameBoard> {
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
 
