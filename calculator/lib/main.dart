@@ -23,6 +23,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var userQuestion = 'question';
+  var userAnswer = 'answer';
+
   List<String> buttons = [
     'C',
     'DEL',
@@ -46,6 +49,33 @@ class _HomePageState extends State<HomePage> {
     '='
   ];
 
+  // button color picker
+  Color buttonColor(String text) {
+    if (text == 'C') {
+      return Colors.green;
+    } else if (text == 'DEL') {
+      return Colors.red;
+    } else if (text != '%' &&
+        text != '/' &&
+        text != 'x' &&
+        text != '-' &&
+        text != '+' &&
+        text != '=') {
+      return Colors.white;
+    } else {
+      return Colors.deepPurple;
+    }
+  }
+
+  // text color chooser
+  Color textColor(int index) {
+    if (index > 3 && index != 7 && index != 11 && index != 15 && index != 19) {
+      return Colors.deepPurple;
+    } else {
+      return Colors.white;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,21 +83,37 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: [
           Expanded(
-            child: Container(),
+            child: Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    child: Text(userQuestion),
+                  ),
+                  Container(
+                    alignment: Alignment.centerRight,
+                    child: Text(userAnswer),
+                  ),
+                ],
+              ),
+            ),
           ),
           Expanded(
               flex: 2,
-              child: GridView.builder(
-                itemCount: buttons.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4),
-                  itemBuilder: (BuildContext context, int index) {
-                    return MyButton(
-                      color: Colors.deepPurple,
-                      textColor: Colors.white,
-                      buttonText: buttons[index],
-                    );
-              }))
+              child: Container(
+                child: GridView.builder(
+                    itemCount: buttons.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 4),
+                    itemBuilder: (BuildContext context, int index) {
+                      return MyButton(
+                        color: buttonColor(buttons[index]),
+                        textColor: textColor(index),
+                        buttonText: buttons[index],
+                      );
+                    }),
+              ))
         ],
       ),
     );
