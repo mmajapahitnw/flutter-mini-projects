@@ -1,5 +1,6 @@
 import 'package:calculator/buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 void main() => runApp(MyApp());
 
@@ -49,56 +50,17 @@ class _HomePageState extends State<HomePage> {
     '='
   ];
 
-  // button color picker
-  Color buttonColor(String text) {
-    if (text == 'C') {
-      return Colors.green;
-    } else if (text == 'DEL') {
-      return Colors.red;
-    } else if (text != '%' &&
-        text != '/' &&
-        text != 'x' &&
-        text != '-' &&
-        text != '+' &&
-        text != '=') {
-      return Colors.white;
-    } else {
-      return Colors.deepPurple;
-    }
-  }
+  // calculation
+  void Calculate() {
+    var finalQuestion = userQuestion;
+    finalQuestion = finalQuestion.replaceAll('x', '*');
 
-  // text color chooser
-  Color textColor(int index) {
-    if (index > 3 && index != 7 && index != 11 && index != 15 && index != 19) {
-      return Colors.deepPurple;
-    } else {
-      return Colors.white;
-    }
-  }
+    Parser p = Parser();
+    Expression exp = p.parse(finalQuestion);
+    ContextModel cm = ContextModel();
+    double eval = exp.evaluate(EvaluationType.REAL, cm);
 
-  // button action chooser
-  Function buttonAction(int index) {
-    if (index == 0) {
-      return () {
-        setState(() {
-          userQuestion = '';
-        });
-      };
-    } else if (index == 1) {
-      return () {
-        setState(() {
-          userQuestion = userQuestion.substring(0, userQuestion.length - 1);
-        });
-      };
-    }
-
-    else {
-      return () {
-        setState(() {
-          userQuestion += buttons[index];
-        });
-      };
-    }
+    userAnswer = eval.toString();
   }
 
   @override
@@ -113,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   SizedBox(
-                    height: 50,
+                    height: 40,
                   ),
                   Container(
                     alignment: Alignment.centerLeft,
@@ -152,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                         crossAxisCount: 4),
                     itemBuilder: (BuildContext context, int index) {
                       // button C
-                      if (index == 0) {
+                      if (buttons[index] == 'C') {
                         return MyButton(buttonText: buttons[index],
                           color: Colors.green,
                           textColor: Colors.white,
@@ -165,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                       }
 
                       // button del
-                      else if (index == 1) {
+                      else if (buttons[index] == 'DEL') {
                         return MyButton(buttonText: buttons[index],
                           color: Colors.red,
                           textColor: Colors.white,
@@ -196,9 +158,9 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.black54,
                           textColor: Colors.white,
                           buttonTapped: () {
-                            setState(() {
-                              userQuestion += buttons[index];
-                            });
+                          setState(() {
+                            Calculate();
+                          });
                           },
                         );
                       }
