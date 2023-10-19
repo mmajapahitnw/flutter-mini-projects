@@ -87,13 +87,32 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
+                  SizedBox(
+                    height: 50,
+                  ),
                   Container(
                     alignment: Alignment.centerLeft,
-                    child: Text(userQuestion),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Text(
+                        userQuestion,
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
                   ),
                   Container(
                     alignment: Alignment.centerRight,
-                    child: Text(userAnswer),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Text(
+                        userAnswer,
+                        style: TextStyle(
+                          fontSize: 40,
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
