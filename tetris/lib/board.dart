@@ -9,13 +9,18 @@ class GameBoard extends StatefulWidget {
 }
 
 class _GameBoardState extends State<GameBoard> {
+  // grid dimension
   int rowLength = 10;
   int colLength = 15;
+
+  //
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
+
+      // create grid of pixels
       body: GridView.builder(
         itemCount: rowLength * colLength,
         physics: NeverScrollableScrollPhysics(),
