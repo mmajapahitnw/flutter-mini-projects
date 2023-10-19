@@ -16,6 +16,8 @@ class _GameBoardState extends State<GameBoard> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: GridView.builder(
+        itemCount: rowLength * colLength,
+        physics: NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: rowLength),
         itemBuilder: (context, index) {
