@@ -54,6 +54,7 @@ class _HomePageState extends State<HomePage> {
   void Calculate() {
     var finalQuestion = userQuestion;
     finalQuestion = finalQuestion.replaceAll('x', '*');
+    finalQuestion = finalQuestion.replaceAll('ANS', userAnswer.toString());
 
     Parser p = Parser();
     Expression exp = p.parse(finalQuestion);
