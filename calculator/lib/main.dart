@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage> {
     } else if (index == 1) {
       return () {
         setState(() {
-          userQuestion = userQuestion.substring(0, userQuestion.length-1);
+          userQuestion = userQuestion.substring(0, userQuestion.length - 1);
         });
       };
     }
@@ -99,8 +99,6 @@ class _HomePageState extends State<HomePage> {
         });
       };
     }
-
-
   }
 
   @override
@@ -153,12 +151,70 @@ class _HomePageState extends State<HomePage> {
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 4),
                     itemBuilder: (BuildContext context, int index) {
-                      return MyButton(
-                        color: buttonColor(buttons[index]),
-                        textColor: textColor(index),
-                        buttonText: buttons[index],
-                        buttonTapped: buttonAction(index),
-                      );
+                      // button C
+                      if (index == 0) {
+                        return MyButton(buttonText: buttons[index],
+                          color: Colors.green,
+                          textColor: Colors.white,
+                          buttonTapped: () {
+                          setState(() {
+                            userQuestion = '';
+                          });
+                          },
+                        );
+                      }
+
+                      // button del
+                      else if (index == 1) {
+                        return MyButton(buttonText: buttons[index],
+                          color: Colors.red,
+                          textColor: Colors.white,
+                          buttonTapped: () {
+                            setState(() {
+                              userQuestion = userQuestion.substring(0, userQuestion.length-1);
+                            });
+                          },
+                        );
+                      }
+
+                      // the operators
+                      else if (buttons[index] == '%' || buttons[index] == '/' || buttons[index] == 'x' || buttons[index] == '-' || buttons[index] == '+'){
+                        return MyButton(buttonText: buttons[index],
+                          color: Colors.deepPurple,
+                          textColor: Colors.white,
+                          buttonTapped: () {
+                            setState(() {
+                              userQuestion += buttons[index];
+                            });
+                          },
+                        );
+                      }
+
+                      // equal sign
+                      else if (buttons[index] == '=') {
+                        return MyButton(buttonText: buttons[index],
+                          color: Colors.black54,
+                          textColor: Colors.white,
+                          buttonTapped: () {
+                            setState(() {
+                              userQuestion += buttons[index];
+                            });
+                          },
+                        );
+                      }
+
+                      // the rest
+                      else {
+                        return MyButton(buttonText: buttons[index],
+                          color: Colors.white,
+                          textColor: Colors.deepPurple,
+                          buttonTapped: () {
+                            setState(() {
+                              userQuestion += buttons[index];
+                            });
+                          },
+                        );
+                      }
                     }),
               ))
         ],
