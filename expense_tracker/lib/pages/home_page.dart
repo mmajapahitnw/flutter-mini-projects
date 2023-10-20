@@ -19,32 +19,36 @@ class _HomePageState extends State<HomePage> {
   void addNewExpense() {
     showDialog(
       context: context,
-      builder: (context) =>
-          AlertDialog(
-            title: Text('Add new expense'),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                // input for expense name
-                TextField(),
-                // input for expense amount
-                TextField(),
-              ],
+      builder: (context) => AlertDialog(
+        title: Text('Add new expense'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // input for expense name
+            TextField(
+              controller: newExpenseNameController,
             ),
-            actions: [
-              MaterialButton(
-                onPressed: save,
-                child: Text('Save'),
-              ),
-              MaterialButton(
-                onPressed: cancel,
-                child: Text('Cancel'),
-              )
-            ],
+            // input for expense amount
+            TextField(
+              controller: newExpenseAmountController,
+            ),
+          ],
+        ),
+        actions: [
+          MaterialButton(
+            onPressed: save,
+            child: Text('Save'),
           ),
+          MaterialButton(
+            onPressed: cancel,
+            child: Text('Cancel'),
+          )
+        ],
+      ),
     );
   }
 
+  // save button
   void save() {
     // create new expense item
     ExpenseItem newExpense = ExpenseItem(
@@ -55,26 +59,45 @@ class _HomePageState extends State<HomePage> {
 
     // add the new expense
     Provider.of<ExpenseData>(context, listen: false).addNewExpense(newExpense);
+
+    Navigator.pop(context);
+    clear();
   }
 
-  void cancel() {}
+  // cancel button
+  void cancel() {
+    Navigator.pop(context);
+    clear();
+  }
+
+  // clear textfields
+  void clear() {
+    newExpenseNameController.clear();
+    newExpenseAmountController.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ExpenseData>(builder: (context, value, child) =>
-      Scaffold(
+    return Consumer<ExpenseData>(
+      builder: (context, value, child) => Scaffold(
         backgroundColor: Colors.grey[300],
         floatingActionButton: FloatingActionButton(
           onPressed: addNewExpense,
           child: Icon(Icons.add),
         ),
         body: ListView.builder(
-          itemBuilder: (context, index) =>
-            ListTile(
-              title: Text(
-                value.getOverallExpenseList()[index].name,
-              ),
+          itemCount: value.getOverallExpenseList().length,
+          itemBuilder: (context, index) => ListTile(
+            title: Text(
+              value.getOverallExpenseList()[index].name,
             ),
+            subtitle: Text(
+              value.getOverallExpenseList()[index].dateTime.toString(),
+            ),
+            trailing: Text(
+              'IDR ${value.getOverallExpenseList()[index].amount}',
+            ),
+          ),
         ),
       ),
     );
