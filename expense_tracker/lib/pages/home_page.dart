@@ -1,3 +1,4 @@
+import 'package:expense_tracker/components/expense_tiles.dart';
 import 'package:expense_tracker/models/expense_item.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/data/expense_data.dart';
@@ -86,19 +87,12 @@ class _HomePageState extends State<HomePage> {
           child: Icon(Icons.add),
         ),
         body: ListView.builder(
-          itemCount: value.getOverallExpenseList().length,
-          itemBuilder: (context, index) => ListTile(
-            title: Text(
-              value.getOverallExpenseList()[index].name,
-            ),
-            subtitle: Text(
-              value.getOverallExpenseList()[index].dateTime.toString(),
-            ),
-            trailing: Text(
-              'IDR ${value.getOverallExpenseList()[index].amount}',
-            ),
-          ),
-        ),
+            itemCount: value.getOverallExpenseList().length,
+            itemBuilder: (context, index) => expenseTile(
+                  name: value.getOverallExpenseList()[index].name,
+                  amount: value.getOverallExpenseList()[index].amount,
+                  dateTime: value.getOverallExpenseList()[index].dateTime,
+                )),
       ),
     );
   }

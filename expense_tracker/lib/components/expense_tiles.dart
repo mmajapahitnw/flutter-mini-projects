@@ -14,6 +14,10 @@ class expenseTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return ListTile(
+      title: Text(name),
+      subtitle: Text('${dateTime.day} / ${dateTime.month} / ${dateTime.year}'),
+      trailing: Text('IDR $amount'),
+    );
   }
 }
