@@ -27,7 +27,7 @@ class ExpenseSummary extends StatelessWidget {
       builder: (context, value, child) => SizedBox(
         height: 200,
         child: MyBarGraph(
-          maxY: 100,
+          maxY: 100000,
           monAmount: value.calculateDailyExpenseSummary()[monday] ?? 0,
           tueAmount: value.calculateDailyExpenseSummary()[tuesday] ?? 0,
           wedAmount: value.calculateDailyExpenseSummary()[wednesday] ?? 0,
