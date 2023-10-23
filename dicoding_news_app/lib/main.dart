@@ -12,6 +12,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: 'News App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      initialRoute: NewsListPage.routeName,
+      routes: {
+        NewsListPage.routeName: (context) => const NewsListPage();
+      },
       home: HomePage(),
     );
   }
