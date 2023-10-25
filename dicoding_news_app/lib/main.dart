@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/pages/homepage.dart';
+import 'package:news_app/pages/detail_page.dart';
+import 'package:news_app/pages/news_list_page.dart';
+import 'package:news_app/util/articles.dart';
+import 'package:news_app/util/webviewWidget.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -10,7 +13,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'News App',
       theme: ThemeData(
@@ -19,9 +22,12 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: NewsListPage.routeName,
       routes: {
-        NewsListPage.routeName: (context) => const NewsListPage();
+        NewsListPage.routeName: (context) => NewsListPage(),
+        DetailPage.routeName: (context) => DetailPage(
+              article: ModalRoute.of(context)?.settings.arguments as Article,
+            ),
+        WebView.routeName: (context) => WebView(url: ModalRoute.of(context)?.settings.arguments as String,),
       },
-      home: HomePage(),
     );
   }
 }

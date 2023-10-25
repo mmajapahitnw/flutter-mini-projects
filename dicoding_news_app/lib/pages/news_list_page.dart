@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/pages/detail_page.dart';
 import 'package:news_app/util/articles.dart';
 
 class NewsListPage extends StatelessWidget {
@@ -17,6 +18,9 @@ class NewsListPage extends StatelessWidget {
       ),
       title: Text(article.title),
       subtitle: Text(article.author),
+      onTap: () {
+        Navigator.pushNamed(context, DetailPage.routeName, arguments: article);
+      },
     );
   }
 
@@ -26,7 +30,7 @@ class NewsListPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('News App'),
       ),
-      body: FutureBuilder(
+      body: FutureBuilder<String>(
         future:
         DefaultAssetBundle.of(context).loadString('assets/articles.json'),
         builder: (context, snapshot) {
