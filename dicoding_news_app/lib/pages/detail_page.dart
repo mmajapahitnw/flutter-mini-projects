@@ -28,12 +28,12 @@ class DetailPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(article.desc),
-                  Divider(
+                  const Divider(
                     color: Colors.grey,
                   ),
                   Text(
                     article.title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 24,

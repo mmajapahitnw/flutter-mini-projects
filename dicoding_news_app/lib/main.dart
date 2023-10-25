@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: NewsListPage.routeName,
       routes: {
-        NewsListPage.routeName: (context) => NewsListPage(),
+        NewsListPage.routeName: (context) => const NewsListPage(),
         DetailPage.routeName: (context) => DetailPage(
               article: ModalRoute.of(context)?.settings.arguments as Article,
             ),

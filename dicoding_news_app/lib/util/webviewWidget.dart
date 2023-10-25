@@ -13,7 +13,7 @@ class WebView extends StatelessWidget {
     final controller = WebViewController()..loadRequest(Uri.parse(url));
     return Scaffold(
       appBar: AppBar(
-        title: Text('News App'),
+        title: const Text('News App'),
       ),
       body: WebViewWidget(
         controller: controller,
