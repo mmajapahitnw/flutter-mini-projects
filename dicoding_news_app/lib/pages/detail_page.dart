@@ -21,7 +21,10 @@ class DetailPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Image.network(article.urlToImage),
+            Hero(
+              tag: article.urlToImage,
+              child: Image.network(article.urlToImage),
+            ),
             Padding(
               padding: const EdgeInsets.all(10),
               child: Column(
@@ -59,7 +62,8 @@ class DetailPage extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, WebView.routeName, arguments: article.url);
+                      Navigator.pushNamed(context, WebView.routeName,
+                          arguments: article.url);
                     },
                     child: const Text('Read More'),
                   ),
