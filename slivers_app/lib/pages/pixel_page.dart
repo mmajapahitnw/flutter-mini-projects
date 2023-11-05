@@ -81,6 +81,7 @@ class PixelPage extends StatelessWidget {
                         Text('Display'),
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 4),
+                          child: Text(contentSpecsDisplay),
                         ),
                       ],
                     ),
