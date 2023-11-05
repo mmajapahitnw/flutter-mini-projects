@@ -15,7 +15,7 @@ class PixelPage extends StatelessWidget {
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
                 background: Image.asset(
-                  'assets/pixel_google.jpg',
+                  'lib/assets/pixel_google.jpg',
                   fit: BoxFit.fitWidth,
                 ),
                 title: const Text('Google Pixel'),
@@ -35,7 +35,7 @@ class PixelPage extends StatelessWidget {
                   children: [
                     Text(
                       r'$375',
-                      style: Theme.of(context).textTheme.headline4,
+                      style: Theme.of(context).textTheme.headlineMedium,
                     ),
                     Container(
                       color: Colors.black26,
@@ -61,14 +61,14 @@ class PixelPage extends StatelessWidget {
                 ),
                 Text(
                   'Stock hanya 5 buah',
-                  style: Theme.of(context).textTheme.caption,
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
                 const SizedBox(height: 8),
                 const Text(contentText),
                 const SizedBox(height: 8),
                 Text(
                   'Spesifikasi',
-                  style: Theme.of(context).textTheme.subtitle1,
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
                 const SizedBox(
                   height: 8,
@@ -109,14 +109,14 @@ class PixelPage extends StatelessWidget {
                 ),
                 Text(
                   'Dijual oleh',
-                  style: Theme.of(context).textTheme.subtitle1,
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
                 Row(
                   children: const [
                     Padding(
                       padding: EdgeInsets.all(8.0),
                       child: CircleAvatar(
-                        backgroundImage: AssetImage('assets/photo_2.jpg'),
+                        backgroundImage: AssetImage('lib/assets/photo_2.jpg'),
                         radius: 24,
                       ),
                     ),
