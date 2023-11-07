@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/pages/detail_page.dart';
-import 'package:news_app/pages/news_list_page.dart';
+import 'package:news_app/pages/article_list_page.dart';
 import 'package:news_app/util/articles.dart';
 import 'package:news_app/util/styles.dart';
 import 'package:news_app/util/webviewWidget.dart';
@@ -38,9 +38,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: NewsListPage.routeName,
+      initialRoute: ArticleListPage.routeName,
       routes: {
-        NewsListPage.routeName: (context) => const NewsListPage(),
+        ArticleListPage.routeName: (context) => const ArticleListPage(),
         DetailPage.routeName: (context) => DetailPage(
               article: ModalRoute.of(context)?.settings.arguments as Article,
             ),
