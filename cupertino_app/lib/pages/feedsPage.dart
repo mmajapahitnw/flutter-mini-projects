@@ -1,3 +1,4 @@
+import 'package:cupertino_app/pages/categoryPage.dart';
 import 'package:flutter/cupertino.dart';
 
 class FeedsPage extends StatelessWidget {
@@ -38,16 +39,46 @@ class FeedsPage extends StatelessWidget {
                             Navigator.push(
                               context,
                               CupertinoPageRoute(
-                                builder: (context) => CategoryPage(
-                                  selectedCategory:
-                                )
-                              )
-                            )
+                                builder: (context) =>
+                                    CategoryPage(
+                                        selectedCategory: 'Technology'
+                                    ),
+                              ),
+                            );
                           },
-                        )
+                          child: Text('Technology'),
+                        ),
+                        CupertinoActionSheetAction(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                builder: (context) =>
+                                    CategoryPage(
+                                      selectedCategory: 'Business',),
+                              ),
+                            );
+                          },
+                          child: Text('Business'),
+                        ),
+                        CupertinoActionSheetAction(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                builder: (context) => CategoryPage(selectedCategory: 'Sport'),
+                              ),
+                            );
+                          },
+                          child: Text('Sport'),
+                        ),
                       ],
-                    )
-                  },)
+                      cancelButton: CupertinoActionSheetAction(
+                        child: Text('Close'),
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                    );
+                  },);
               },
             ),
           ],

@@ -10,9 +10,27 @@ class SettingsPage extends StatelessWidget {
         middle: Text('Settings Page'),
       ),
       child: Center(
-        child: Text(
-          'Settings Page',
-          style: CupertinoTheme.of(context).textTheme.navLargeTitleTextStyle,
+        child: CupertinoButton(
+          child: Text('Log Out'),
+          onPressed: () {
+            showCupertinoDialog(
+                context: context,
+                builder: (context) {
+                  return CupertinoAlertDialog(
+                    title: Text('Are you sure to log out?'),
+                    actions: [
+                      CupertinoDialogAction(
+                        child: Text('No'),
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                      CupertinoDialogAction(
+                        child: Text('Yes'),
+                        onPressed: () => Navigator.pop(context),
+                      )
+                    ],
+                  );
+                });
+          },
         ),
       ),
     );
