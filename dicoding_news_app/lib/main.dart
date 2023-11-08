@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/pages/detail_page.dart';
-import 'package:news_app/pages/article_list_page.dart';
-import 'package:news_app/util/articles.dart';
-import 'package:news_app/util/styles.dart';
-import 'package:news_app/util/webviewWidget.dart';
+import 'package:news_app/data/model/articles.dart';
+import 'package:news_app/common/styles.dart';
+import 'package:news_app/ui/article_list_page.dart';
+import 'package:news_app/ui/article_web_view.dart';
+import 'package:news_app/ui/detail_page.dart';
+import 'package:news_app/ui/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,8 +39,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: ArticleListPage.routeName,
+      initialRoute: HomePage.routeName,
       routes: {
+        HomePage.routeName: (context) => const HomePage(),
         ArticleListPage.routeName: (context) => const ArticleListPage(),
         DetailPage.routeName: (context) => DetailPage(
               article: ModalRoute.of(context)?.settings.arguments as Article,

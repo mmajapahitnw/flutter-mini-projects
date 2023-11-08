@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/util/articles.dart';
-import 'package:news_app/util/webviewWidget.dart';
+import 'package:news_app/data/model/articles.dart';
+import 'package:news_app/ui/article_web_view.dart';
 
 class DetailPage extends StatelessWidget {
   static const routeName = '/article_detail';

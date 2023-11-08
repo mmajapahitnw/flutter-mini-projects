@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:news_app/pages/detail_page.dart';
-import 'package:news_app/util/articles.dart';
-import 'package:news_app/util/widgets/platform_widget.dart';
+import 'package:news_app/data/model/articles.dart';
+import 'package:news_app/ui/detail_page.dart';
+import 'package:news_app/widgets/platform_widget.dart';
 
 class ArticleListPage extends StatelessWidget {
   static const routeName = '/article_list';
