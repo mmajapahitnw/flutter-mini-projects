@@ -42,15 +42,11 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildAndroid(BuildContext context) {
     return Scaffold(
-      body: _bottomNavIndex == 0 ? ArticleListPage() : SettingsPage(),
+      body: _listWidget[_bottomNavIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: secondaryColor,
         currentIndex: _bottomNavIndex,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.public), label: 'Headline',),
-          BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.settings), label: 'Settings'),
-        ],
+        items: _bottomNavBarItems,
         onTap: (selected) {
           setState(() {
             _bottomNavIndex = selected;
