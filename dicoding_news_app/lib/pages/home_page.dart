@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:news_app/pages/article_list_page.dart';
+import 'package:news_app/pages/settings_page.dart';
 import 'package:news_app/util/styles.dart';
 import 'package:news_app/util/widgets/platform_widget.dart';
 
@@ -23,7 +24,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildAndroid(BuildContext context) {
     return Scaffold(
-      body: ArticleListPage(),
+      body: _bottomNavIndex == 0 ?  ArticleListPage() : SettingsPage(),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: secondaryColor,
         currentIndex: _bottomNavIndex,
@@ -55,7 +56,7 @@ class _HomePageState extends State<HomePage> {
       tabBuilder: (context, index) {
         switch (index) {
           case 1:
-            return Placeholder();
+            return SettingsPage();
           default:
             return ArticleListPage();
         }

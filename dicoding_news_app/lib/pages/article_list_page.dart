@@ -72,6 +72,7 @@ class ArticleListPage extends StatelessWidget {
       child: _buildList(context),
       navigationBar: CupertinoNavigationBar(
         middle: const Text('News App'),
+        transitionBetweenRoutes: false,
       ),
     );
   }
