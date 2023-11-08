@@ -60,20 +60,10 @@ class _HomePageState extends State<HomePage> {
     return CupertinoTabScaffold(
       tabBar: CupertinoTabBar(
         activeColor: secondaryColor,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.news), label: 'Headline',),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.settings), label: 'Settings',),
-        ],
+        items: _bottomNavBarItems,
       ),
       tabBuilder: (context, index) {
-        switch (index) {
-          case 1:
-            return SettingsPage();
-          default:
-            return ArticleListPage();
-        }
+        return _listWidget[index];
       },
     );
   }
